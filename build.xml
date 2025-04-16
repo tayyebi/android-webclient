@@ -1,0 +1,24 @@
+<project name="Gordarg" default="compile" basedir=".">
+
+    <property name="version" value="0" />
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="obj" />
+    <property name="android.jar" value="/home/tayyebi/AndroidSDK/platforms/android-14/android.jar" />
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <echo>Compiling Java source</echo>
+
+        <javac classpath="${android.jar}"
+               srcdir="${src.dir}"
+               destdir="${build.dir}"
+               source="1.6"
+               target="1.6"
+        />
+    </target>
+
+</project>
