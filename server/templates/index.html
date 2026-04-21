@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL → APK Builder</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+    <header>
+        <h1>URL → APK Builder</h1>
+        <p class="subtitle">Turn any website into an Android app — no coding required.</p>
+    </header>
+
+    {% if let Some(err) = error %}
+    <div class="alert alert-error" role="alert">{{ err }}</div>
+    {% endif %}
+
+    <form method="post" action="/build" class="build-form">
+
+        <div class="field">
+            <label for="url">Website URL <span class="required">*</span></label>
+            <input type="url" id="url" name="url" required
+                   placeholder="https://example.com"
+                   autocomplete="url">
+            <small>The URL your app will load on launch.</small>
+        </div>
+
+        <div class="field">
+            <label for="app_name">App Name <span class="required">*</span></label>
+            <input type="text" id="app_name" name="app_name" required
+                   placeholder="My Awesome App"
+                   maxlength="50">
+            <small>Shown on the home screen and in the app drawer.</small>
+        </div>
+
+        <div class="field">
+            <label for="package_name">Package Name <span class="required">*</span></label>
+            <input type="text" id="package_name" name="package_name" required
+                   placeholder="com.example.myapp"
+                   pattern="[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+"
+                   title="Lowercase letters, digits, underscores — at least two dot-separated parts"
+                   autocomplete="off">
+            <small>Unique identifier, e.g. <code>com.example.myapp</code></small>
+        </div>
+
+        <div class="field">
+            <label for="version_name">Version</label>
+            <input type="text" id="version_name" name="version_name"
+                   placeholder="1.0" value="1.0"
+                   maxlength="20">
+            <small>Displayed version string, e.g. <code>1.0</code></small>
+        </div>
+
+        <div class="field">
+            <label for="domain">In-App Domain</label>
+            <input type="text" id="domain" name="domain"
+                   placeholder="example.com"
+                   autocomplete="off">
+            <small>
+                Links matching this domain stay inside the app.
+                Other links open in the system browser.
+                Leave blank to derive from the URL above.
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">⚙ Build APK</button>
+    </form>
+</main>
+</body>
+</html>

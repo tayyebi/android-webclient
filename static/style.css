@@ -1,0 +1,309 @@
+/* =========================================================
+   URL → APK Builder — global stylesheet
+   No JavaScript required.
+   ========================================================= */
+
+/* ---------- Reset & base -------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #f4f6fb;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* ---------- Layout --------------------------------------- */
+main {
+    width: 100%;
+    max-width: 640px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f3460;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    margin-top: 0.4rem;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* ---------- Form ----------------------------------------- */
+.build-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(15, 52, 96, 0.1);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.4rem;
+}
+
+.field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.required {
+    color: #e05252;
+    margin-left: 2px;
+}
+
+.field input {
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid #c8d0e0;
+    border-radius: 7px;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+    background: #fafbff;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    outline: none;
+}
+
+.field input:focus {
+    border-color: #4361ee;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    background: #fff;
+}
+
+.field small {
+    font-size: 0.78rem;
+    color: #777;
+    line-height: 1.4;
+}
+
+.field code {
+    font-size: 0.82em;
+    background: #eef0f8;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+/* ---------- Buttons -------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: background 0.18s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: #4361ee;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #3451d1;
+}
+
+button.btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    padding: 0.8rem;
+}
+
+/* ---------- Alerts --------------------------------------- */
+.alert {
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: #fdecea;
+    color: #b71c1c;
+    border-left: 4px solid #e53935;
+}
+
+/* ---------- Status card ---------------------------------- */
+.status-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 24px rgba(15, 52, 96, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eef0f8;
+}
+
+.status-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #666;
+    min-width: 80px;
+}
+
+.job-id {
+    font-size: 0.82rem;
+    background: #eef0f8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+/* ---------- Status badge --------------------------------- */
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge.building {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.badge.done {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.badge.error {
+    background: #fdecea;
+    color: #b71c1c;
+}
+
+/* ---------- Download box --------------------------------- */
+.download-box {
+    background: #d1e7dd;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.download-box p {
+    font-weight: 600;
+    color: #0a3622;
+}
+
+/* ---------- Build log ------------------------------------ */
+.log-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 24px rgba(15, 52, 96, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+.log-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+.log {
+    background: #0f1117;
+    color: #c9d1d9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* ---------- Misc ---------------------------------------- */
+.refresh-note {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    margin-top: 0.5rem;
+}
+
+.back-link a {
+    color: #4361ee;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------------------------------- */
+@media (max-width: 480px) {
+    .build-form {
+        padding: 1.25rem;
+    }
+
+    .status-card,
+    .log-section {
+        padding: 1rem 1.25rem;
+    }
+
+    .download-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

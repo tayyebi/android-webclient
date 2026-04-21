@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Status — {{ job_id }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    {% if status != "done" && status != "error" %}
+    <meta http-equiv="refresh" content="5; url=/status/{{ job_id }}">
+    {% endif %}
+</head>
+<body>
+<main>
+    <header>
+        <h1>Build Status</h1>
+    </header>
+
+    <div class="status-card">
+        <div class="status-row">
+            <span class="label">Job ID</span>
+            <code class="job-id">{{ job_id }}</code>
+        </div>
+        <div class="status-row">
+            <span class="label">Status</span>
+            <span class="badge {{ status }}">{{ status }}</span>
+        </div>
+    </div>
+
+    {% if status == "done" %}
+    <div class="download-box">
+        <p>Your APK is ready!</p>
+        <a class="btn btn-primary" href="/download/{{ job_id }}">⬇ Download APK</a>
+    </div>
+    {% endif %}
+
+    {% if status == "error" %}
+    <div class="alert alert-error" role="alert">
+        Build failed. See the log below for details.
+    </div>
+    {% endif %}
+
+    {% if status == "pending" || status == "building" %}
+    <p class="refresh-note">This page refreshes automatically every 5 seconds.</p>
+    {% endif %}
+
+    <section class="log-section">
+        <h2>Build Log</h2>
+        <pre class="log">{% if log.is_empty() %}(no output yet){% else %}{{ log }}{% endif %}</pre>
+    </section>
+
+    <p class="back-link"><a href="/">← Build another app</a></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[package]
+name = "apk-builder"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7"
+askama = "0.12"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+uuid = { version = "1", features = ["v4"] }
+tower-http = { version = "0.5", features = ["fs"] }
+tokio-util = { version = "0.7", features = ["io"] }
+anyhow = "1"
