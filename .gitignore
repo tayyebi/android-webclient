@@ -3,3 +3,5 @@
 /obj/
 /src/R.java
 classes.dex
+/server/target/
+.env

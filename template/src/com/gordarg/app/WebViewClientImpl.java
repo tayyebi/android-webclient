@@ -20,7 +20,7 @@ public class WebViewClientImpl extends WebViewClient {
 
         String host = Uri.parse(url).getHost();
         if (host != null &&
-            (host.equals("gordarg.com") || host.endsWith(".gordarg.com"))) {
+            (host.equals("{{DOMAIN_FILTER}}") || host.endsWith(".{{DOMAIN_FILTER}}"))) {
             return false;
         }
 

@@ -1,0 +1,16 @@
+<project name="WebClientApp" default="compile" basedir=".">
+
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="obj" />
+
+    <target name="compile">
+        <echo>Compiling Java source</echo>
+        <javac classpath="${platform}"
+               srcdir="${src.dir}"
+               destdir="${build.dir}"
+               source="1.8"
+               target="1.8"
+        />
+    </target>
+
+</project>
