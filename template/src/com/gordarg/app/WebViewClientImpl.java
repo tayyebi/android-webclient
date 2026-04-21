@@ -18,7 +18,11 @@ public class WebViewClientImpl extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView webView, String url) {
 
-        if (url.indexOf("{{DOMAIN_FILTER}}") > -1) return false;
+        String host = Uri.parse(url).getHost();
+        if (host != null &&
+            (host.equals("{{DOMAIN_FILTER}}") || host.endsWith(".{{DOMAIN_FILTER}}"))) {
+            return false;
+        }
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(intent);

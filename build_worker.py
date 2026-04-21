@@ -136,8 +136,15 @@ def build(job_dir: pathlib.Path, package_name: str, app_name: str,
         src_new.mkdir(parents=True, exist_ok=True)
         for java_file in src_old.glob("*.java"):
             shutil.copy2(java_file, src_new / java_file.name)
-        # Remove old template source tree
-        shutil.rmtree(job_dir / "src" / "com")
+        # Remove only the old template package directory, then prune any
+        # now-empty ancestor directories.  We must NOT blindly remove
+        # job_dir/src/com because the new package may also live under com/.
+        shutil.rmtree(src_old)
+        for ancestor in (src_old.parent, src_old.parent.parent):
+            try:
+                ancestor.rmdir()   # succeeds only if the directory is empty
+            except OSError:
+                break
 
     # Substitute remaining placeholders in Java source files
     java_subs = {
